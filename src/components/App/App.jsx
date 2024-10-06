@@ -19,7 +19,7 @@ function App() {
 
   // Initialization of data from local storage when loading a component
   useEffect(() => {
-    const savedContacts = localStorage.getItem('contactsValue');
+    const savedContacts = localStorage.getItem('contacts');
     if (savedContacts) {
       setContacts(JSON.parse(savedContacts));
     }
