@@ -17,6 +17,20 @@ function App() {
 
   const [filter, setFilter] = useState('');
 
+  // Initialization of data from local storage when loading a component
+  useEffect(() => {
+    const savedContacts = localStorage.getItem('contactsValue');
+    if (savedContacts) {
+      setContacts(JSON.parse(savedContacts));
+    }
+  }, []);
+
+  // Saving statistics to local storage every time the data changes
+  useEffect(() => {
+    const stringifiedContacts = JSON.stringify(filteredContacts);
+    localStorage.setItem('filteredContacts', stringifiedContacts);
+  }, [contacts]);
+
   // Function to update the filter
   const handleChange = event => {
     setFilter(event.target.value);
@@ -36,20 +50,6 @@ function App() {
 
     setContacts(prevState => [...prevState, finalContact]);
   };
-
-  // Initialization of data from local storage when loading a component
-  useEffect(() => {
-    const savedContacts = localStorage.getItem('contactsValue');
-    if (savedContacts) {
-      setContacts(JSON.parse(savedContacts));
-    }
-  }, []);
-
-  // Saving statistics to local storage every time the data changes
-  useEffect(() => {
-    const stringifiedContacts = JSON.stringify(filteredContacts);
-    localStorage.setItem('filteredContacts', stringifiedContacts);
-  }, [contacts]);
 
   return (
     <>
