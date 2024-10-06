@@ -23,14 +23,12 @@ function App() {
     if (savedContacts) {
       setContacts(JSON.parse(savedContacts));
     }
-    console.log(savedContacts);
   }, []);
 
   // Saving statistics to local storage every time the data changes
   useEffect(() => {
     const stringifiedContacts = JSON.stringify(contacts);
     localStorage.setItem('contacts', stringifiedContacts);
-    console.log(stringifiedContacts);
   }, [contacts]);
 
   // Function to update the filter

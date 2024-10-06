@@ -17,7 +17,7 @@ const ContactForm = ({ onAddContact }) => {
       .required('Required'),
     number: Yup.string()
       .required('Required')
-      .matches(phoneNumberRegex, 'Number must be xxx-xx-xx !!!'),
+      .matches(phoneNumberRegex, 'Number must be 111-11-11 !!!'),
   });
 
   return (
@@ -29,15 +29,27 @@ const ContactForm = ({ onAddContact }) => {
       <Form className={css.form}>
         <label>
           <span>Name:</span>
-          <Field type="text" name="name" placeholder="" />
+          <Field
+            className={css.input}
+            type="text"
+            name="name"
+            placeholder="Enter your name..."
+          />
           <ErrorMessage className={css.error} name="name" component="span" />
         </label>
         <label>
           <span>Number:</span>
-          <Field type="text" name="number" placeholder="" />
+          <Field
+            className={css.input}
+            type="text"
+            name="number"
+            placeholder="Enter your number..."
+          />
           <ErrorMessage className={css.error} name="number" component="span" />
         </label>
-        <button type="submit">Add contact</button>
+        <button className={css.addBtn} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );

@@ -1,0 +1,19 @@
+.contacts {
+    display: flex;
+    gap: 10px;
+}
+
+.contact {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    width: 220px;
+}
+
+.deleteBtn {
+    margin-left: auto;
+    text-decoration: none;
+    background: none repeat scroll 0 0 transparent;
+    border: none;
+}

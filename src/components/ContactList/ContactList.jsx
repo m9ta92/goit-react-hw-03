@@ -1,15 +1,20 @@
 import Contact from '../Contact/Contact';
+import css from './ContactList.module.css';
 
 const ContactList = props => {
   const { contacts, onDeleteContact } = props;
 
   return (
     <div>
-      <ul>
+      <ul className={css.contacts}>
         {contacts.map(contact => (
-          <li key={contact.id}>
+          <li className={css.contact} key={contact.id}>
             <Contact name={contact.name} number={contact.number} />
-            <button type="button" onClick={() => onDeleteContact(contact.id)}>
+            <button
+              className={css.deleteBtn}
+              type="button"
+              onClick={() => onDeleteContact(contact.id)}
+            >
               ❌
             </button>
           </li>
