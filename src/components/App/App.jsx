@@ -23,12 +23,14 @@ function App() {
     if (savedContacts) {
       setContacts(JSON.parse(savedContacts));
     }
+    console.log(savedContacts);
   }, []);
 
   // Saving statistics to local storage every time the data changes
   useEffect(() => {
     const stringifiedContacts = JSON.stringify(contacts);
     localStorage.setItem('contacts', stringifiedContacts);
+    console.log(stringifiedContacts);
   }, [contacts]);
 
   // Function to update the filter
@@ -36,12 +38,12 @@ function App() {
     setFilter(event.target.value);
   };
 
-  // Contact filtering logic (case insensitive)
+  // Filtering contact
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  //
+  // Adding contact
   const onAddContact = formData => {
     const finalContact = {
       ...formData,
@@ -51,13 +53,23 @@ function App() {
     setContacts(prevState => [...prevState, finalContact]);
   };
 
+  // Delete contact
+  const onDeleteContact = profileId => {
+    const updatedContact = contacts.filter(contact => contact.id !== profileId);
+
+    setContacts(updatedContact);
+  };
+
   return (
     <>
       <div>
         <h1>Phonebook</h1>
         <ContactForm onAddContact={onAddContact} />
         <SearchBox filterValue={filter} handleChange={handleChange} />
-        <ContactList contacts={filteredContacts} />
+        <ContactList
+          contacts={filteredContacts}
+          onDeleteContact={onDeleteContact}
+        />
       </div>
     </>
   );
