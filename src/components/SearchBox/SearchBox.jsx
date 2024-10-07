@@ -8,6 +8,7 @@ const SearchBox = ({ filterValue, handleChange }) => {
         className={css.input}
         type="text"
         placeholder="Search contacts..."
+        // necessarily ↓
         value={filterValue}
         onChange={handleChange}
       />

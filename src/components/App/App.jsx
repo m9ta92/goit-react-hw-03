@@ -1,4 +1,4 @@
-// imports
+// imports ↓
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
@@ -7,6 +7,7 @@ import SearchBox from '../SearchBox/SearchBox.jsx';
 import ContactList from '../ContactList/ContactList.jsx';
 
 function App() {
+  // ↓ Array of objects ↓
   const [contacts, setContacts] = useState([
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -16,7 +17,7 @@ function App() {
 
   const [filter, setFilter] = useState('');
 
-  // Initialization of data from local storage when loading a component
+  // ↓ Initialization of data from local storage when loading a component ↓
   useEffect(() => {
     const savedContacts = localStorage.getItem('contacts');
     if (savedContacts) {
@@ -24,23 +25,23 @@ function App() {
     }
   }, []);
 
-  // Saving statistics to local storage every time the data changes
+  // ↓ Saving statistics to local storage every time the data changes ↓
   useEffect(() => {
     const stringifiedContacts = JSON.stringify(contacts);
     localStorage.setItem('contacts', stringifiedContacts);
   }, [contacts]);
 
-  // Function to update the filter
+  // ↓ Function to update the filter ↓
   const handleChange = event => {
     setFilter(event.target.value);
   };
 
-  // Filtering contact
+  // ↓ Filtering contact ↓
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  // Adding contact
+  // ↓ Adding contact ↓
   const onAddContact = formData => {
     const finalContact = {
       ...formData,
@@ -50,7 +51,7 @@ function App() {
     setContacts(prevState => [...prevState, finalContact]);
   };
 
-  // Delete contact
+  // ↓ Delete contact ↓
   const onDeleteContact = profileId => {
     const updatedContact = contacts.filter(contact => contact.id !== profileId);
     setContacts(updatedContact);
