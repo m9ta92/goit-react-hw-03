@@ -1,11 +1,10 @@
 // imports
 import { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
 
 import ContactForm from '../ContactForm/ContactForm.jsx';
 import SearchBox from '../SearchBox/SearchBox.jsx';
 import ContactList from '../ContactList/ContactList.jsx';
-
-import { nanoid } from 'nanoid';
 
 function App() {
   const [contacts, setContacts] = useState([
