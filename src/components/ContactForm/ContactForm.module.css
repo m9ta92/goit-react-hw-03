@@ -9,6 +9,11 @@
     padding: 10px;
 }
 
+.formEl {
+    font-size: larger;
+    font-weight: 500;
+}
+
 .error {
     color: red;
     font-size: small;

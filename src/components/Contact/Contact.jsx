@@ -3,17 +3,22 @@ import css from './Contact.module.css';
 import { TbUserFilled } from 'react-icons/tb';
 import { TbPhoneFilled } from 'react-icons/tb';
 
-const Contact = contacts => {
+const Contact = ({ id, name, number, onDeleteContact }) => {
   return (
-    <div>
-      <div className={css.asd}>
-        <TbUserFilled />
-        <p>{contacts.name}</p>
+    <div className={css.contactCard}>
+      <div>
+        <div className={css.asd}>
+          <TbUserFilled />
+          <p>{name}</p>
+        </div>
+        <div className={css.asd}>
+          <TbPhoneFilled />
+          <a href="tel:">{number}</a>
+        </div>
       </div>
-      <div className={css.asd}>
-        <TbPhoneFilled />
-        <p>{contacts.number}</p>
-      </div>
+      <button className={css.deleteBtn} onClick={() => onDeleteContact(id)}>
+        ❌
+      </button>
     </div>
   );
 };

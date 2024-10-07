@@ -28,7 +28,7 @@ const ContactForm = ({ onAddContact }) => {
     >
       <Form className={css.form}>
         <label>
-          <span>Name:</span>
+          <span className={css.formEl}>Name:</span>
           <Field
             className={css.input}
             type="text"
@@ -38,7 +38,7 @@ const ContactForm = ({ onAddContact }) => {
           <ErrorMessage className={css.error} name="name" component="span" />
         </label>
         <label>
-          <span>Number:</span>
+          <span className={css.formEl}>Number:</span>
           <Field
             className={css.input}
             type="text"

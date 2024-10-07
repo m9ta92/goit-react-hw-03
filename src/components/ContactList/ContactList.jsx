@@ -1,22 +1,18 @@
 import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
 
-const ContactList = props => {
-  const { contacts, onDeleteContact } = props;
-
+const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <div>
       <ul className={css.contacts}>
         {contacts.map(contact => (
-          <li className={css.contact} key={contact.id}>
-            <Contact name={contact.name} number={contact.number} />
-            <button
-              className={css.deleteBtn}
-              type="button"
-              onClick={() => onDeleteContact(contact.id)}
-            >
-              ❌
-            </button>
+          <li key={contact.id}>
+            <Contact
+              id={contact.id}
+              name={contact.name}
+              number={contact.number}
+              onDeleteContact={onDeleteContact}
+            />
           </li>
         ))}
       </ul>

@@ -54,7 +54,6 @@ function App() {
   // Delete contact
   const onDeleteContact = profileId => {
     const updatedContact = contacts.filter(contact => contact.id !== profileId);
-
     setContacts(updatedContact);
   };
 
